@@ -1,0 +1,165 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{navigation symbols}{}
+
+\title[MAC-MIGS Induction: Collaboration]{Version Control: Sharing and working together  on \LaTeX + code}
+%\date{29th September, 2020}
+\author[L. Banjai]{ Lehel Banjai (\texttt{l.banjai@hw.ac.uk})}
+
+
+
+\begin{document}
+
+\frame{\titlepage
+}
+
+\begin{frame}{Version Control/Data Share}
+  Why do we need it?
+
+  \begin{itemize}
+  \item More people working on the same project in different locations  and at the same time.
+   \item Easy access to past versions.
+\item Resolving conflicting changes.
+    \item Share code and data with wider community.
+    \item Funding agencies and journals require more and more the reproducibility of results: This requires access to both data and code.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Version control/data share software}
+
+ \begin{itemize}
+ \item Email back-and-forth and attach date to filename, e.g., {\texttt{currentwork270922.tex}} 
+   \begin{itemize}
+   \item You may laugh, but probably most common.
+   \item OK if only a few versions of a few files likely.
+     \item Past versions in your Inbox
+      \item Not good for sharing code.\pause
+   \end{itemize}
+\item Dropbox 
+  \begin{itemize}
+  \item Basic functionality, (possible?) security issues.
+  \item Limited free storage.
+   \item Constantly updates the repository - both positive and negative.
+  \item Extremely easy to  use  with one or two collaborators.  
+  \item Not really intended for wide dissemination of code.\pause
+  \end{itemize}
+\item Subversion (SVN)
+  \begin{itemize}
+  \item The real deal -- all version control power you may wish.
+  \item Basic functionality easy to use (I've only used command line in Linux).
+  \item Open source (Apache License)
+  \item Requires a host server.
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Version control software/data share ctd.}
+  \begin{itemize}
+  \item Microsoft Teams (not really version control)
+    \begin{itemize}
+    \item Simply data storage in the cloud (many other options there).
+    \item Good for simpler, not very dynamic projects with few collaborators.
+    \item Have video conferences.
+   \item Easy to use.
+    \item I've found it useful for interaction with PhD and MSc students.      \pause
+    \end{itemize}
+\item Git/GitHub
+  \begin{itemize}
+  \item Git as good as SVN for version control.
+  \item Git: free and open source (GNU General Public Version 2)
+   \item The most used version control.   
+   \item Ideal for sharing code.
+   \item GitHub a distributive repository. (No need for host server)
+    \item Repository on GitHub can be both private and public.
+    \item Somewhat trickier to begin with, but once all set up, the basic functionality easy to use.
+    \item GitHub recently bought by Microsoft \dots
+    \item Alternatives to GitHub: GitLab, SourceForge, BitBucket \dots
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Online collaborative \LaTeX editors}
+ Can type at the same time in the document and see real time the changes by the collaborators.
+
+  \begin{itemize}
+  \item Overleaf
+    \begin{itemize}
+    \item Easy to use.
+     \item Slow compilation.
+    \item With free version limit on number of collaborators.
+    \end{itemize}
+\item Papeeria (free version)
+  \begin{itemize}
+  \item Unlimited number of collaborators per project.
+  \item Only one active private project.
+\item Git sync
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Setting up a new local repository with Git}
+  \begin{itemize}
+  \item If not available install Git (In Debian \texttt{sudo apt get install git})
+\item Create an account on GitHub (\texttt{github.com}).
+\item Create directory, enter the directory and run \\
+  \begin{center}
+    \texttt{git init}
+  \end{center}
+\item Write some stuff (include a ReadMe file) and add with \\
+  \begin{center}    
+\texttt{git add foo} 
+  \end{center}
+\item Commit changes to repository\\\begin{center} \texttt{git commit -m="description of change being commited"}\end{center}
+\item Now you have local version control. To allow other people to use, need  to create a GitHub repository.
+  \end{itemize}
+ \end{frame}
+
+ \begin{frame}{Connecting to GitHub}
+   \begin{itemize}
+   \item Go to \texttt{github.com} and log in.
+   \item Create new repository (top right). you can choose whether to make it private or public.
+   \item Go back to your folder, and follow the instructions, e.g.,\\
+     \begin{center}
+       \begin{tabular}{l}
+       \texttt{git remote add origin https://github.com/lehelb/Test.git}\\
+       \texttt{git branch -M main}\\
+       \texttt{git push -u origin main}         
+       \end{tabular}
+     \end{center}
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}[fragile]{Basic functionality}
+\begin{verbatim}
+#to add new file
+git add new_file
+# remove file
+git rm old_file
+# git status
+git status
+# to commit all at any point added files
+git commit -a
+# to push to git-hub
+git push
+# if changed file but want to revert to the original version
+git checkout -- filename
+# pull if someone else changed something
+git pull
+#to remember token
+git config credential.helper store
+# to ignore files add them to .gitignore
+\end{verbatim}
+ \end{frame}
+
+ \begin{frame}{Further functionality}
+   \begin{itemize}
+   \item You can add collaborators on GitHub. 
+   \item You can clone other people's repositories if they are public. Unless you are added as collaborator you cannot push changes.
+\item If you want to to work on someone else's repository {\em fork} it on GitHub.
+\item etc.
+\item There's a huge amount of information and tutorials online.
+\item The repository we created in the talk is at \texttt{https://github.com/lehelb/MacMigsCollaborate}.
+   \end{itemize}
+ \end{frame}
+\end{document}
